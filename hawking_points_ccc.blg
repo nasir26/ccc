@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'hawking_points_ccc.blg'
+[45] biber:340> INFO - === Mon Dec  8, 2025, 14:28:36
+[54] Biber.pm:419> INFO - Reading 'hawking_points_ccc.bcf'
+[86] Biber.pm:979> INFO - Found 6 citekeys in bib section 0
+[93] Biber.pm:4419> INFO - Processing section 0
+[99] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[100] bibtex.pm:1713> INFO - LaTeX decoding ...
+[103] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[140] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[140] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[140] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[140] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[142] bbl.pm:660> INFO - Writing 'hawking_points_ccc.bbl' with encoding 'UTF-8'
+[143] bbl.pm:763> INFO - Output to hawking_points_ccc.bbl

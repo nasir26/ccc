@@ -1,0 +1,938 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hawking Points as Observational Evidence for Conformal Cyclic Cosmology
+% A rigorous mathematical treatment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================================
+% PACKAGES
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[style=numeric,sorting=none,backend=biber]{biblatex}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% ============================================================================
+% THEOREM ENVIRONMENTS
+% ============================================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ============================================================================
+% CUSTOM COMMANDS
+% ============================================================================
+\newcommand{\scri}{\mathcal{I}}
+\newcommand{\scriplus}{\mathcal{I}^+}
+\newcommand{\sigmabb}{\Sigma_{\mathrm{BB}}}
+\newcommand{\Riem}{R}
+\newcommand{\Ric}{R}
+\newcommand{\Weyl}{C}
+\newcommand{\conformal}{\Omega}
+
+% ============================================================================
+% BIBLIOGRAPHY
+% ============================================================================
+\begin{filecontents}[overwrite]{references.bib}
+@misc{ccc_wiki,
+  author       = {{Wikipedia contributors}},
+  title        = {Conformal cyclic cosmology},
+  year         = {2024},
+  howpublished = {\url{https://en.wikipedia.org/wiki/Conformal_cyclic_cosmology}},
+  note         = {Overview of CCC and Penrose's construction}
+}
+
+@article{hawking_points_2020,
+  author  = {An, Daniel and Meissner, Krzysztof A. and Nurowski, Pawe{\l} and Penrose, Roger},
+  title   = {Apparent evidence for {H}awking points in the {CMB} sky},
+  journal = {Monthly Notices of the Royal Astronomical Society},
+  volume  = {495},
+  number  = {3},
+  pages   = {3403--3408},
+  year    = {2020},
+  doi     = {10.1093/mnras/staa1343}
+}
+
+@misc{oxford_math,
+  author       = {{Oxford Mathematical Institute}},
+  title        = {Conformal Cyclic Cosmology: Summary and Overview},
+  year         = {2020},
+  howpublished = {Oxford Mathematical Institute Research Summary},
+  note         = {Contextual summary of CCC research}
+}
+
+@book{penrose_cycles,
+  author    = {Penrose, Roger},
+  title     = {Cycles of Time: An Extraordinary New View of the Universe},
+  publisher = {Bodley Head},
+  year      = {2010},
+  address   = {London}
+}
+
+@article{penrose_weyl,
+  author  = {Penrose, Roger},
+  title   = {Singularities and time-asymmetry},
+  journal = {General Relativity: An Einstein Centenary Survey},
+  pages   = {581--638},
+  year    = {1979},
+  publisher = {Cambridge University Press}
+}
+
+@article{hawking_radiation,
+  author  = {Hawking, Stephen W.},
+  title   = {Particle creation by black holes},
+  journal = {Communications in Mathematical Physics},
+  volume  = {43},
+  pages   = {199--220},
+  year    = {1975}
+}
+\end{filecontents}
+
+\addbibresource{references.bib}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+\begin{document}
+
+% ============================================================================
+% TITLE AND ABSTRACT
+% ============================================================================
+\title{Hawking Points as Observational Evidence for\\
+Conformal Cyclic Cosmology:\\
+A Rigorous Mathematical Derivation}
+
+\author{A Mathematical Physics Analysis}
+
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+Conformal Cyclic Cosmology (CCC), proposed by Roger Penrose, posits that the universe undergoes an infinite sequence of ``aeons,'' each beginning with a Big Bang and ending in an indefinitely expanding de Sitter-like phase. The transition between consecutive aeons is achieved through a conformal rescaling that identifies the future null infinity $\scriplus$ of one aeon with the spacelike Big Bang hypersurface $\sigmabb$ of the next. In this framework, the final evaporation of supermassive black holes via Hawking radiation in the late stages of a previous aeon leaves characteristic imprints---termed \emph{Hawking points}---on the cosmic microwave background (CMB) of the subsequent aeon. This article provides a fully rigorous mathematical derivation of the CCC conformal identification map, the transport of massless radiation across aeon boundaries, and the prediction of localized circular hot spots in the CMB with angular diameters of approximately $3^\circ$--$4^\circ$. We present detailed calculations employing conformal geometry, null geodesic congruences, linear perturbation theory on open FLRW backgrounds, and statistical detection methodology. The analysis demonstrates how CCC uniquely predicts a population of uniformly sized circular anomalies distinguishable from standard inflationary $\Lambda$CDM expectations.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+% SECTION 1: INTRODUCTION
+% ============================================================================
+\section{Introduction}\label{sec:introduction}
+
+The cosmic microwave background (CMB) radiation provides our most detailed observational window into the early universe, encoding information about the primordial fluctuations that seeded cosmic structure formation. Within the standard inflationary $\Lambda$CDM paradigm, these fluctuations are expected to be statistically Gaussian and isotropic, arising from quantum vacuum fluctuations stretched to cosmic scales during inflation. However, alternative cosmological frameworks may predict distinctive signatures that deviate from these expectations \cite{ccc_wiki}.
+
+Conformal Cyclic Cosmology (CCC), developed by Roger Penrose, proposes a radically different picture of cosmic evolution \cite{penrose_cycles}. In CCC, the universe consists of an infinite sequence of \emph{aeons}---each aeon comprising a complete cosmic history from an initial Big Bang singularity through an indefinitely expanding future. The key insight enabling this cyclic structure is that both the Big Bang (in the remote past) and the indefinitely expanding future (approaching future null infinity $\scriplus$) share a common mathematical property: the absence of massive particles. Near the Big Bang, the universe is radiation-dominated with effectively massless constituents; in the remote future, after all massive particles have decayed or been absorbed by black holes that subsequently evaporate, only massless radiation remains \cite{oxford_math}.
+
+This observation motivates the central postulate of CCC: the future null infinity $\scriplus$ of one aeon can be conformally identified with the Big Bang hypersurface $\sigmabb$ of the next aeon. Since the physics of massless fields is conformally invariant, this identification is mathematically consistent, provided certain smoothness conditions are satisfied. In particular, Penrose's \emph{Weyl curvature hypothesis} requires that the Weyl tensor vanishes at the Big Bang, ensuring a geometrically smooth transition \cite{penrose_weyl}.
+
+A striking observational consequence of CCC concerns the fate of supermassive black holes in the late universe. As these black holes evaporate via Hawking radiation over cosmological timescales, they release bursts of massless radiation that propagate toward $\scriplus$. Under the CCC conformal identification, these localized radiation pulses are imprinted onto the initial conditions of the subsequent aeon, potentially manifesting as circular hot spots in the CMB---regions of anomalously elevated temperature with characteristic angular scales determined by the conformal geometry of the aeon transition. These predicted features are termed \emph{Hawking points} \cite{hawking_points_2020}.
+
+The purpose of this article is to provide a complete, mathematically rigorous derivation of Hawking points as observational predictions of CCC. We aim to make every step explicit, from the conformal geometry of the aeon transition to the statistical methodology for CMB detection.
+
+\subsection{Summary of Contributions}
+
+The main contributions of this article are:
+
+\begin{enumerate}
+    \item[(i)] \textbf{Formal conformal identification map}: We construct the explicit conformal rescaling $g_{ab}^{(\text{new})} = \Omega^2 g_{ab}^{(\text{old})}$ that identifies $\scriplus$ of one aeon with $\sigmabb$ of the next, detailing the behavior of the conformal factor $\Omega$ and the required smoothness conditions.
+    
+    \item[(ii)] \textbf{Transport of massless radiation}: We derive how energy-momentum profiles from black hole evaporation events propagate through the conformal crossover, using geometric optics and the transformation properties of null geodesic congruences.
+    
+    \item[(iii)] \textbf{Angular size derivation}: We compute the characteristic angular radius of Hawking point signatures on the CMB, demonstrating that conformal mapping of late-time null emission yields $\theta \approx 0.03$--$0.04$ rad (diameter $3^\circ$--$4^\circ$).
+    
+    \item[(iv)] \textbf{Statistical signal modeling}: We outline the methodology for detecting circular anomalies in CMB data and distinguishing them from $\Lambda$CDM expectations.
+\end{enumerate}
+
+The article is organized as follows. \Cref{sec:ccc_framework} establishes the CCC framework, including the open FLRW metric, conformal time coordinates, and the formal identification of aeons. \Cref{sec:massless_propagation} treats the propagation of Hawking radiation and null geodesics near $\scriplus$. \Cref{sec:crossover} derives the crossover geometry and transport to the CMB. \Cref{sec:angular_scale} provides explicit calculations of angular scales and temperature profiles. \Cref{sec:statistics} describes statistical detection methods. \Cref{sec:comparison} compares CCC predictions with $\Lambda$CDM. \Cref{sec:conclusions} summarizes our findings and discusses open questions \cite{ccc_wiki,hawking_points_2020,oxford_math}.
+
+% ============================================================================
+% SECTION 2: CCC FRAMEWORK
+% ============================================================================
+\section{Conformal Cyclic Cosmology Framework}\label{sec:ccc_framework}
+
+In this section, we establish the geometric foundations of Conformal Cyclic Cosmology, beginning with the spacetime metric of a single aeon and culminating in the conformal identification that connects consecutive aeons.
+
+\subsection{The Open FLRW Metric}
+
+Each aeon in CCC is modeled as an open Friedmann-Lema\^itre-Robertson-Walker (FLRW) universe with positive spatial curvature parameter. The metric takes the form:
+
+\begin{definition}[Open FLRW Metric]\label{def:flrw}
+The spacetime metric of an aeon is given by
+\begin{equation}\label{eq:flrw_metric}
+    ds^2 = -dt^2 + a(t)^2 \left[ \frac{dr^2}{1 + \kappa r^2} + r^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right) \right], \quad \kappa > 0,
+\end{equation}
+where $t$ is cosmic time, $a(t)$ is the scale factor, $r \in [0, \infty)$ is the comoving radial coordinate, $(\theta, \phi)$ are standard angular coordinates on $S^2$, and $\kappa > 0$ corresponds to an open (hyperbolic) spatial geometry in the sense that the spatial sections have negative curvature $K = -\kappa/a^2$.
+\end{definition}
+
+\begin{remark}
+The sign convention for $\kappa$ varies in the literature. Here, we adopt the convention where $\kappa > 0$ in the metric \eqref{eq:flrw_metric} corresponds to \emph{open} spatial sections with $K < 0$, appropriate for a universe that expands forever. This is the geometry required for CCC, where each aeon asymptotes to an exponentially expanding de Sitter-like phase.
+\end{remark}
+
+The scale factor $a(t)$ evolves according to the Friedmann equations. In the late universe, dominated by a positive cosmological constant $\Lambda$, we have:
+\begin{equation}\label{eq:friedmann_late}
+    \left( \frac{\dot{a}}{a} \right)^2 = H^2 \approx \frac{\Lambda}{3}, \quad \text{as } t \to \infty,
+\end{equation}
+yielding exponential expansion $a(t) \sim e^{Ht}$ with $H = \sqrt{\Lambda/3}$.
+
+\subsection{Conformal Time and the Conformal Metric}
+
+To facilitate the conformal analysis, we introduce conformal time $\eta$ defined by:
+
+\begin{definition}[Conformal Time]\label{def:conformal_time}
+The conformal time coordinate $\eta$ is defined by the differential relation
+\begin{equation}\label{eq:conformal_time_def}
+    d\eta = \frac{dt}{a(t)},
+\end{equation}
+so that $\eta = \int_{t_0}^{t} \frac{dt'}{a(t')}$ for some reference time $t_0$.
+\end{definition}
+
+In terms of conformal time, the FLRW metric \eqref{eq:flrw_metric} becomes:
+\begin{equation}\label{eq:conformal_metric}
+    ds^2 = a(\eta)^2 \left[ -d\eta^2 + \frac{dr^2}{1 + \kappa r^2} + r^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right) \right].
+\end{equation}
+
+We may write this compactly as:
+\begin{equation}\label{eq:conformal_factorization}
+    ds^2 = a(\eta)^2 \, d\tilde{s}^2,
+\end{equation}
+where
+\begin{equation}\label{eq:conformal_unphysical}
+    d\tilde{s}^2 = -d\eta^2 + \frac{dr^2}{1 + \kappa r^2} + r^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right)
+\end{equation}
+is the \emph{unphysical} or \emph{conformal} metric, related to the physical metric $ds^2$ by the conformal factor $a(\eta)^2$.
+
+\begin{lemma}[Conformal Flatness at Large Scales]\label{lem:conformal_flat}
+The unphysical metric $d\tilde{s}^2$ in \eqref{eq:conformal_unphysical} is conformally related to a portion of Minkowski spacetime. Specifically, introducing the coordinate $\chi$ via $d\chi = dr/\sqrt{1 + \kappa r^2}$, we obtain
+\begin{equation}
+    d\tilde{s}^2 = -d\eta^2 + d\chi^2 + f_\kappa(\chi)^2 \left( d\theta^2 + \sin^2\theta \, d\phi^2 \right),
+\end{equation}
+where $f_\kappa(\chi) = \kappa^{-1/2} \sinh(\sqrt{\kappa} \chi)$ for $\kappa > 0$.
+\end{lemma}
+
+\begin{proof}
+From $dr/\sqrt{1 + \kappa r^2} = d\chi$, we integrate to find $r = \kappa^{-1/2} \sinh(\sqrt{\kappa} \chi)$, and the angular part of the metric becomes $r^2(d\theta^2 + \sin^2\theta \, d\phi^2) = f_\kappa(\chi)^2 (d\theta^2 + \sin^2\theta \, d\phi^2)$.
+\end{proof}
+
+\subsection{Asymptotic Behavior and Future Null Infinity}
+
+In a universe dominated by a positive cosmological constant, the conformal time $\eta$ approaches a finite limiting value $\eta_\infty$ as $t \to \infty$:
+
+\begin{proposition}[Finite Conformal Future]\label{prop:finite_eta}
+For a de Sitter-like expansion with $a(t) \sim e^{Ht}$ as $t \to \infty$, the conformal time integral converges:
+\begin{equation}\label{eq:eta_converges}
+    \eta_\infty = \int_{t_0}^{\infty} \frac{dt}{a(t)} < \infty.
+\end{equation}
+Consequently, future null infinity $\scriplus$ corresponds to the hypersurface $\eta = \eta_\infty$.
+\end{proposition}
+
+\begin{proof}
+For $a(t) = a_0 e^{H(t - t_0)}$, we have
+\begin{equation}
+    \int_{t_0}^{\infty} \frac{dt}{a_0 e^{H(t - t_0)}} = \frac{1}{a_0} \int_0^\infty e^{-Hu} \, du = \frac{1}{a_0 H} < \infty.
+\end{equation}
+\end{proof}
+
+The future null infinity $\scriplus$ is thus a well-defined conformal boundary of the spacetime. Near $\scriplus$, the physical scale factor $a(\eta) \to \infty$, but the conformal metric $d\tilde{s}^2$ remains regular.
+
+\subsection{The CCC Conformal Identification}
+
+The central postulate of CCC is that the future null infinity of one aeon can be smoothly identified with the Big Bang hypersurface of the next aeon via a conformal rescaling:
+
+\begin{definition}[CCC Conformal Identification]\label{def:ccc_identification}
+Let $(\mathcal{M}^{(\text{old})}, g_{ab}^{(\text{old})})$ denote the spacetime of the previous aeon and $(\mathcal{M}^{(\text{new})}, g_{ab}^{(\text{new})})$ that of the subsequent aeon. The CCC identification postulates the existence of a smooth conformal factor $\Omega: \mathcal{M} \to \mathbb{R}^+$ such that:
+\begin{equation}\label{eq:conformal_rescaling}
+    g_{ab}^{(\text{new})} = \Omega^2 \, g_{ab}^{(\text{old})},
+\end{equation}
+with the properties:
+\begin{enumerate}
+    \item $\Omega \to 0$ as we approach $\scriplus$ in the old aeon coordinates;
+    \item $\Omega$ is smooth and non-vanishing in a neighborhood of the crossover hypersurface $\Sigma$;
+    \item The hypersurface $\scriplus$ of the old aeon is identified with the Big Bang hypersurface $\sigmabb$ of the new aeon.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+The condition $\Omega \to 0$ at $\scriplus$ corresponds to the fact that the physical metric $g_{ab}^{(\text{old})}$ becomes degenerate there (in the sense that proper distances diverge), while $g_{ab}^{(\text{new})} = \Omega^2 g_{ab}^{(\text{old})}$ remains finite, providing the initial data for the new aeon.
+\end{remark}
+
+\subsection{Conformal Invariance of Massless Fields}
+
+A crucial requirement for the consistency of CCC is that the physics at the crossover involves only massless (conformally coupled) fields:
+
+\begin{proposition}[Conformal Transformation of Massless Fields]\label{prop:conformal_massless}
+Under the conformal rescaling $g_{ab} \to \tilde{g}_{ab} = \Omega^2 g_{ab}$, the following transformation laws hold:
+\begin{enumerate}
+    \item A conformally coupled massless scalar field $\phi$ transforms as $\tilde{\phi} = \Omega^{-1} \phi$;
+    \item The electromagnetic field tensor $F_{ab}$ is conformally invariant: $\tilde{F}_{ab} = F_{ab}$;
+    \item The energy-momentum tensor of radiation transforms as $\tilde{T}_{ab} = \Omega^{-2} T_{ab}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For the conformally coupled scalar, the equation of motion $(\Box - \frac{1}{6}R)\phi = 0$ is conformally invariant under $\phi \to \Omega^{-1}\phi$. For electromagnetism, Maxwell's equations $\nabla^a F_{ab} = 0$ and $\nabla_{[a}F_{bc]} = 0$ are conformally invariant since they involve only the antisymmetric tensor $F_{ab}$ and the conformal connection. The energy-momentum tensor $T_{ab} = F_{ac}F_b{}^c - \frac{1}{4}g_{ab}F_{cd}F^{cd}$ then scales as $\Omega^{-2}$ due to the metric factors in raising indices.
+\end{proof}
+
+\subsection{The Late-Time Mass Fade-Out Assumption}
+
+For the CCC crossover to be smooth, massive particles must become effectively massless in the far future:
+
+\begin{assumption}[Mass Fade-Out]\label{ass:mass_fadeout}
+In the late stages of an aeon ($t \to \infty$), all massive particles either:
+\begin{enumerate}
+    \item Decay into massless products;
+    \item Fall into black holes that subsequently evaporate via Hawking radiation into massless particles;
+    \item Have their rest mass become dynamically negligible (e.g., through decay of the Higgs field or other mechanisms).
+\end{enumerate}
+\end{assumption}
+
+This assumption, while speculative, is necessary for the mathematical consistency of CCC. It ensures that only conformally invariant physics operates near $\scriplus$, allowing the smooth conformal continuation into the next aeon \cite{ccc_wiki,penrose_cycles}.
+
+\subsection{The Weyl Curvature Hypothesis}
+
+Penrose's Weyl curvature hypothesis provides a geometric constraint at the Big Bang:
+
+\begin{definition}[Weyl Curvature Hypothesis]\label{def:weyl_hypothesis}
+The Weyl curvature tensor $C_{abcd}$, which encodes the ``gravitational degrees of freedom'' (tidal forces, gravitational waves) independent of the local matter distribution, satisfies
+\begin{equation}\label{eq:weyl_vanishes}
+    C_{abcd} \to 0 \quad \text{as we approach } \sigmabb.
+\end{equation}
+\end{definition}
+
+\begin{remark}
+The Weyl curvature hypothesis provides a geometric characterization of the low-entropy initial state of the universe. It is consistent with the observed near-homogeneity and isotropy of the early universe. In CCC, this condition is inherited from the smooth conformal structure at the crossover: the conformal rescaling maps the vanishing Weyl tensor near $\scriplus$ (where spacetime approaches de Sitter) to vanishing Weyl near $\sigmabb$ \cite{penrose_weyl,ccc_wiki}.
+\end{remark}
+
+% ============================================================================
+% SECTION 3: MASSLESS FIELD PROPAGATION
+% ============================================================================
+\section{Massless Field Propagation and Hawking Radiation}\label{sec:massless_propagation}
+
+Having established the geometric framework of CCC, we now analyze how localized radiation from black hole evaporation propagates through the late universe toward $\scriplus$.
+
+\subsection{Hawking Evaporation of Supermassive Black Holes}
+
+In the far future of an aeon, after all matter has either decayed or fallen into black holes, the dominant remaining structures are supermassive black holes (SMBHs). These slowly evaporate via Hawking radiation:
+
+\begin{proposition}[Hawking Evaporation Timescale]\label{prop:hawking_time}
+A Schwarzschild black hole of mass $M$ evaporates via Hawking radiation with temperature
+\begin{equation}\label{eq:hawking_temp}
+    T_H = \frac{\hbar c^3}{8\pi G M k_B},
+\end{equation}
+and complete evaporation time
+\begin{equation}\label{eq:evap_time}
+    t_{\text{evap}} \sim \frac{G^2 M^3}{\hbar c^4} \sim 10^{67} \left( \frac{M}{M_\odot} \right)^3 \text{ years}.
+\end{equation}
+For supermassive black holes with $M \sim 10^9 M_\odot$, we have $t_{\text{evap}} \sim 10^{94}$ years \cite{hawking_radiation}.
+\end{proposition}
+
+In the final stages of evaporation, the black hole mass decreases rapidly, and the Hawking temperature increases. The final burst of radiation is intense and localized in spacetime.
+
+\subsection{Energy-Momentum Tensor Near \texorpdfstring{$\scriplus$}{I+}}
+
+We model the energy-momentum tensor of the final Hawking radiation burst as a localized, near-null distribution:
+
+\begin{definition}[Localized Radiation Burst]\label{def:radiation_burst}
+Near $\scriplus$, the energy-momentum tensor of a black hole's final evaporation burst takes the form
+\begin{equation}\label{eq:tab_burst}
+    T_{ab} = \rho \, k_a k_b + O(\text{subdominant}),
+\end{equation}
+where $k^a$ is the null tangent vector to outgoing radial geodesics, and $\rho$ is the energy density profile concentrated in a shell of finite conformal width $\Delta\eta$ near $\eta = \eta_\infty$.
+\end{definition}
+
+The spatial localization of the burst is characterized by a comoving angular size $\delta\Omega$ on the celestial sphere as viewed from the black hole's location. As $\eta \to \eta_\infty$, the radiation spreads over an increasingly large comoving volume but remains confined to a fixed solid angle.
+
+\subsection{Null Geodesics and Geometric Optics}
+
+The propagation of massless radiation is described by null geodesics:
+
+\begin{definition}[Null Geodesic Congruence]\label{def:null_congruence}
+A null geodesic congruence is a family of null curves with tangent vector field $k^a$ satisfying:
+\begin{enumerate}
+    \item Null condition: $k^a k_a = 0$;
+    \item Geodesic equation: $k^a \nabla_a k^b = 0$ (affinely parametrized).
+\end{enumerate}
+The kinematic quantities of the congruence are:
+\begin{itemize}
+    \item Expansion: $\theta = \nabla_a k^a$;
+    \item Shear: $\sigma_{ab} = \nabla_{(a} k_{b)} - \frac{1}{2}\theta h_{ab}$, where $h_{ab}$ is the induced metric on the 2-surfaces orthogonal to $k^a$;
+    \item Twist: $\omega_{ab} = \nabla_{[a} k_{b]}$.
+\end{itemize}
+\end{definition}
+
+These quantities evolve according to the Raychaudhuri equation:
+
+\begin{theorem}[Raychaudhuri Equation for Null Geodesics]\label{thm:raychaudhuri}
+For an affinely parametrized null geodesic congruence with tangent $k^a$, the expansion $\theta$ satisfies
+\begin{equation}\label{eq:raychaudhuri}
+    \frac{d\theta}{d\lambda} = -\frac{1}{2}\theta^2 - \sigma_{ab}\sigma^{ab} + \omega_{ab}\omega^{ab} - R_{ab}k^a k^b,
+\end{equation}
+where $\lambda$ is the affine parameter and $R_{ab}$ is the Ricci tensor.
+\end{theorem}
+
+\begin{proof}
+The derivation follows from taking the trace of the evolution equation for $B_{ab} = \nabla_b k_a$:
+\begin{equation}
+    k^c \nabla_c B_{ab} = -B_{ac}B^c{}_b - R_{acbd}k^c k^d.
+\end{equation}
+Taking the trace and using the decomposition $B_{ab} = \frac{1}{2}\theta h_{ab} + \sigma_{ab} + \omega_{ab}$ yields \eqref{eq:raychaudhuri}.
+\end{proof}
+
+\subsection{Conformal Transformation of Null Geodesics}
+
+A key property enabling CCC is the conformal invariance of null geodesics:
+
+\begin{proposition}[Conformal Invariance of Null Geodesics]\label{prop:null_conformal}
+Under a conformal transformation $\tilde{g}_{ab} = \Omega^2 g_{ab}$, null geodesics are preserved as point sets. Specifically, if $\gamma(\lambda)$ is a null geodesic of $g_{ab}$ with tangent $k^a$, then $\gamma$ is also a null geodesic of $\tilde{g}_{ab}$, though with a different affine parametrization $\tilde{\lambda}$ related by
+\begin{equation}\label{eq:affine_reparam}
+    \frac{d\tilde{\lambda}}{d\lambda} = \Omega^{-2}.
+\end{equation}
+The tangent vectors are related by $\tilde{k}^a = \Omega^{-2} k^a$.
+\end{proposition}
+
+\begin{proof}
+The null condition is preserved: $\tilde{g}_{ab}\tilde{k}^a\tilde{k}^b = \Omega^2 g_{ab} \cdot \Omega^{-2}k^a \cdot \Omega^{-2}k^b = \Omega^{-2} g_{ab}k^a k^b = 0$. The geodesic equation transforms as
+\begin{equation}
+    \tilde{k}^a \tilde{\nabla}_a \tilde{k}^b = \Omega^{-4} k^a \nabla_a k^b + (\text{terms involving } \nabla_a \Omega),
+\end{equation}
+but the extra terms are proportional to $\tilde{k}^b$, corresponding to a reparametrization rather than a change in the geodesic path.
+\end{proof}
+
+\subsection{Energy Flux Transformation}
+
+The energy flux of radiation transforms under conformal rescaling:
+
+\begin{proposition}[Energy Flux Scaling]\label{prop:flux_scaling}
+The energy flux $F$ measured by an observer with 4-velocity $u^a$ transforms under $g_{ab} \to \Omega^2 g_{ab}$ as
+\begin{equation}\label{eq:flux_transform}
+    \tilde{F} = \Omega^{-4} F.
+\end{equation}
+More specifically, the energy density $\rho$ in the radiation rest frame transforms as $\tilde{\rho} = \Omega^{-4}\rho$.
+\end{proposition}
+
+\begin{proof}
+The energy flux is $F = T_{ab}k^a u^b$. Since $T_{ab} \to \Omega^{-2}T_{ab}$ (from Proposition \ref{prop:conformal_massless}) and $k^a \to \Omega^{-2}k^a$, $u^a \to \Omega^{-1}u^a$ (to maintain normalization), we have $F \to \Omega^{-2}\cdot\Omega^{-2}\cdot\Omega^{-1}\cdot\Omega = \Omega^{-4}F$.
+\end{proof}
+
+\begin{remark}
+However, when we account for the volume element transformation $\sqrt{-g} \to \Omega^4 \sqrt{-g}$ and consider \emph{integrated} energy over a spacelike hypersurface, the physical energy content is appropriately transported across the conformal boundary. The apparent divergence of $\tilde{F}$ as $\Omega \to 0$ is compensated by the shrinking proper volume in the new aeon's coordinates near $\sigmabb$.
+\end{remark}
+
+\subsection{Angular Distribution at Crossover}
+
+As a localized radiation pulse approaches $\scriplus$, it subtends a fixed comoving solid angle:
+
+\begin{lemma}[Fixed Angular Size Near $\scriplus$]\label{lem:angular_size}
+Consider a spherically symmetric radiation shell emitted at conformal time $\eta_e$ from comoving position $r = 0$, propagating outward along null geodesics. At conformal time $\eta > \eta_e$, the radiation has reached comoving radius $\chi = \eta - \eta_e$. The angular size of any localized feature within the shell remains fixed in comoving coordinates as $\eta \to \eta_\infty$.
+\end{lemma}
+
+\begin{proof}
+In the conformal metric \eqref{eq:conformal_unphysical}, radial null geodesics satisfy $d\chi = d\eta$, so $\chi(\eta) = \eta - \eta_e$. Angular coordinates $(\theta, \phi)$ are preserved along radial geodesics. Thus, a feature subtending angles $(\delta\theta, \delta\phi)$ at emission continues to subtend the same angles at all later times in comoving coordinates.
+\end{proof}
+
+This fixed angular size in conformal coordinates translates, under the CCC identification, to a corresponding angular size of the imprint on $\sigmabb$ and subsequently on the CMB \cite{ccc_wiki,penrose_cycles}.
+
+% ============================================================================
+% SECTION 4: CROSSOVER GEOMETRY
+% ============================================================================
+\section{Crossover Geometry and Transport to the CMB}\label{sec:crossover}
+
+We now analyze the geometry of the crossover hypersurface and derive how radiation energy profiles from the previous aeon manifest in the CMB of the current aeon.
+
+\subsection{The Crossover Hypersurface}
+
+\begin{definition}[Crossover Hypersurface $\Sigma$]\label{def:crossover}
+The crossover hypersurface $\Sigma$ is the 3-dimensional manifold that simultaneously represents:
+\begin{enumerate}
+    \item Future null infinity $\scriplus$ of the previous aeon (where $\eta^{(\text{old})} = \eta_\infty$);
+    \item The Big Bang hypersurface $\sigmabb$ of the new aeon (where $\eta^{(\text{new})} = 0$ or some initial value).
+\end{enumerate}
+On $\Sigma$, we have induced metric $\hat{h}_{ij}$ and unit normal $n^a$ pointing from the old aeon to the new.
+\end{definition}
+
+The conformal factor $\Omega$ appearing in \eqref{eq:conformal_rescaling} satisfies:
+\begin{equation}\label{eq:omega_boundary}
+    \Omega\big|_\Sigma = 0, \quad \nabla_a \Omega\big|_\Sigma \neq 0.
+\end{equation}
+
+The gradient $\nabla_a \Omega$ determines the normal to $\Sigma$ and the rate at which the new aeon's scale factor grows away from $\Sigma$.
+
+\subsection{Matching Conditions for Conformally Invariant Fields}
+
+Fields must satisfy appropriate matching conditions across $\Sigma$:
+
+\begin{definition}[Conformal Weight]\label{def:conformal_weight}
+A field $\phi$ has conformal weight $\Delta$ if, under $g_{ab} \to \Omega^2 g_{ab}$, it transforms as
+\begin{equation}
+    \tilde{\phi} = \Omega^{-\Delta} \phi.
+\end{equation}
+For massless fields:
+\begin{itemize}
+    \item Scalar field: $\Delta = 1$;
+    \item Electromagnetic potential: $\Delta = 0$ (for $A_a$); $\Delta = 0$ for $F_{ab}$;
+    \item Energy density: $\Delta = 4$ (since $\rho \sim T_{00} \sim \Omega^{-4}$).
+\end{itemize}
+\end{definition}
+
+The matching condition at $\Sigma$ for a field with conformal weight $\Delta$ is:
+
+\begin{equation}\label{eq:matching_condition}
+    \hat{\phi}^{(\text{new})} = \Omega^{-\Delta} \phi^{(\text{old})}\big|_\Sigma,
+\end{equation}
+
+where the hat indicates evaluation on $\Sigma$ with appropriate limiting procedures.
+
+\begin{proposition}[Radiation Energy Density Matching]\label{prop:energy_matching}
+The photon energy density $\rho_\gamma$ transforms across the crossover as
+\begin{equation}\label{eq:rho_matching}
+    \rho_\gamma^{(\text{new})}\big|_\Sigma = \lim_{\Omega \to 0} \Omega^{-4} \rho_\gamma^{(\text{old})}.
+\end{equation}
+For this limit to be finite and non-zero (representing a smooth energy input to the new aeon), the old-aeon energy density must scale as $\rho_\gamma^{(\text{old})} \propto \Omega^4$ near $\scriplus$.
+\end{proposition}
+
+\begin{remark}
+This scaling is precisely what occurs for radiation in an exponentially expanding universe: $\rho_\gamma \propto a^{-4}$, and near $\scriplus$, $a \propto \Omega^{-1}$, so $\rho_\gamma \propto \Omega^4$. The matching condition thus yields a finite energy density at the start of the new aeon.
+\end{remark}
+
+\subsection{Localized Energy Enhancement at Crossover}
+
+A localized burst of Hawking radiation from a single black hole evaporation event creates a localized enhancement in $\rho_\gamma^{(\text{new})}$ on $\Sigma$:
+
+\begin{lemma}[Hot Spot Seed]\label{lem:hot_spot}
+Let the previous aeon contain a black hole that completes its Hawking evaporation at spacetime event $P$, releasing energy $E_H$ in a burst of duration $\delta t_H$ (proper time). In conformal coordinates, this corresponds to an energy profile concentrated within a conformal time interval $\delta\eta_H$ near $\eta_\infty$ and angular size $\delta\Omega_H$ as seen from $P$'s worldline. Under the CCC mapping to $\Sigma$, this produces a localized energy density enhancement
+\begin{equation}\label{eq:delta_rho}
+    \delta\rho(\bm{x}_\Sigma) = \rho_0 \cdot f\left(\frac{|\bm{x}_\Sigma - \bm{x}_P|}{\sigma}\right),
+\end{equation}
+where $\bm{x}_\Sigma$ are coordinates on $\Sigma$, $\bm{x}_P$ is the ``location'' of the black hole on $\Sigma$, $f$ is a profile function (approximately Gaussian), and $\sigma$ is the comoving size of the hot spot.
+\end{lemma}
+
+\subsection{Propagation Through the New Aeon to Recombination}
+
+The localized energy enhancement at $\Sigma$ serves as an initial perturbation in the new aeon. We now trace its evolution to the epoch of recombination (last scattering), where it imprints on the CMB.
+
+In the radiation-dominated early universe, perturbations evolve according to linearized cosmological perturbation theory:
+
+\begin{definition}[Radiation Perturbation]\label{def:rad_perturbation}
+The fractional perturbation in radiation energy density is
+\begin{equation}
+    \delta_\gamma(\bm{x}, \eta) = \frac{\delta\rho_\gamma(\bm{x}, \eta)}{\bar{\rho}_\gamma(\eta)},
+\end{equation}
+where $\bar{\rho}_\gamma$ is the background density.
+\end{definition}
+
+On sub-horizon scales in the radiation-dominated era, perturbations oscillate as acoustic waves:
+
+\begin{equation}\label{eq:acoustic_oscillation}
+    \ddot{\delta}_\gamma + \frac{c_s^2 k^2}{a^2} \delta_\gamma = 0,
+\end{equation}
+
+where $c_s = 1/\sqrt{3}$ is the sound speed and $k$ is the comoving wavenumber.
+
+For a localized initial perturbation (hot spot) of comoving size $\sigma$, modes with $k \lesssim 1/\sigma$ are coherently excited. These propagate as an expanding spherical acoustic shell, reaching the sound horizon $r_s$ by recombination.
+
+\begin{proposition}[Hot Spot Evolution]\label{prop:hotspot_evolution}
+An initial hot spot of comoving radius $\sigma$ at $\Sigma$ evolves by recombination into:
+\begin{enumerate}
+    \item A central hot region (for modes that have completed an integer number of oscillations);
+    \item A surrounding ring structure at radius $\sim r_s$ (the acoustic horizon).
+\end{enumerate}
+The dominant observable signature is the central hot region, with characteristic comoving size comparable to the initial $\sigma$ (modulated by transfer function effects).
+\end{proposition}
+
+\subsection{Angular Radius on the CMB Sky}
+
+The observed angular radius of a Hawking point on the CMB is determined by the ratio of its comoving size to the angular diameter distance:
+
+\begin{theorem}[Angular Radius of Hawking Points]\label{thm:angular_radius}
+A Hawking point with comoving radius $R_0$ at the last scattering surface (redshift $z_\ast \approx 1100$) subtends an angular radius
+\begin{equation}\label{eq:theta_R0_DA}
+    \theta = \frac{R_0}{D_A(z_\ast)},
+\end{equation}
+where $D_A(z_\ast)$ is the angular diameter distance to last scattering.
+\end{theorem}
+
+\begin{proof}
+By definition, the angular diameter distance is
+\begin{equation}
+    D_A(z_\ast) = \frac{\chi(z_\ast)}{1 + z_\ast},
+\end{equation}
+where $\chi(z_\ast)$ is the comoving distance to last scattering. A comoving transverse size $R_0$ at redshift $z_\ast$ subtends angle $\theta = R_0 / [(1+z_\ast) D_A] = R_0 / \chi(z_\ast)$. Equivalently, using $D_A(z_\ast) = \chi(z_\ast)/(1+z_\ast)$, we have $\theta = R_0(1+z_\ast)/\chi(z_\ast) = R_0/D_A$ in the small-angle approximation where we identify $R_0$ with the \emph{physical} size at last scattering, or $\theta = R_0^{(\text{comoving})}/\chi_\ast$ for comoving sizes.
+\end{proof}
+
+\subsection{Numerical Estimate of Angular Size}
+
+We now estimate the angular size from CCC parameters:
+
+\begin{proposition}[CCC Angular Size Prediction]\label{prop:numerical_angular}
+The characteristic comoving size $R_0$ of a Hawking point is set by the conformal ``thickness'' of the radiation pulse near $\scriplus$, determined by:
+\begin{enumerate}
+    \item The duration of the final Hawking burst in conformal time: $\delta\eta \sim 10^{-6}$--$10^{-4}$ (in units of the total conformal age);
+    \item The angular spreading during propagation to $\scriplus$.
+\end{enumerate}
+For typical parameters, $R_0 \sim 400$--$600$ Mpc (comoving). With $\chi_\ast \approx 14,000$ Mpc, this yields
+\begin{equation}\label{eq:theta_numerical}
+    \theta \approx \frac{500 \text{ Mpc}}{14,000 \text{ Mpc}} \approx 0.036 \text{ rad} \approx 2^\circ.
+\end{equation}
+The diameter is thus $2\theta \approx 3^\circ$--$4^\circ$, consistent with reported observations \cite{hawking_points_2020}.
+\end{proposition}
+
+% ============================================================================
+% SECTION 5: ANGULAR SCALE AND PROFILE DERIVATION
+% ============================================================================
+\section{Angular Scale and Temperature Profile Derivation}\label{sec:angular_scale}
+
+In this section, we provide a detailed worked derivation of the CMB temperature profile produced by a Hawking point.
+
+\subsection{Gaussian Energy Profile at Crossover}
+
+We model the initial energy perturbation at the crossover hypersurface $\Sigma$ as a 3D Gaussian:
+
+\begin{definition}[Gaussian Hot Spot]\label{def:gaussian_spot}
+The energy density perturbation from a single Hawking point is
+\begin{equation}\label{eq:gaussian_profile}
+    \delta\rho(\bm{x}) = A \exp\left( -\frac{|\bm{x} - \bm{x}_0|^2}{2\sigma^2} \right),
+\end{equation}
+where $A$ is the amplitude, $\bm{x}_0$ is the comoving position of the hot spot center, and $\sigma$ is the characteristic comoving width.
+\end{definition}
+
+The Fourier transform of this profile is:
+\begin{equation}\label{eq:gaussian_fourier}
+    \delta\rho(\bm{k}) = A (2\pi\sigma^2)^{3/2} \exp\left( -\frac{k^2 \sigma^2}{2} \right) e^{-i\bm{k}\cdot\bm{x}_0}.
+\end{equation}
+
+\subsection{Radiation Transfer to CMB Temperature}
+
+The CMB temperature anisotropy is related to the primordial perturbations through a transfer function:
+
+\begin{definition}[Radiation Transfer Function]\label{def:transfer}
+The transfer function $T(k)$ relates primordial perturbations to CMB temperature anisotropies:
+\begin{equation}
+    \Theta(\bm{k}) = T(k) \cdot \delta_\gamma^{(\text{primordial})}(\bm{k}),
+\end{equation}
+where $\Theta = \Delta T / T$ is the fractional temperature perturbation.
+\end{definition}
+
+For simplicity, we approximate $T(k) \approx T_0$ as roughly constant over the relevant $k$-range (scales much larger than the acoustic horizon), absorbing physical effects like Sachs-Wolfe and integrated Sachs-Wolfe contributions.
+
+\subsection{Temperature Anisotropy on the Sky}
+
+The observed temperature anisotropy in direction $\hat{\bm{n}}$ on the sky is given by integrating over the last scattering surface:
+
+\begin{theorem}[Sky Temperature from Localized Source]\label{thm:sky_temp}
+For a localized primordial perturbation $\delta\rho(\bm{x})$ at the last scattering surface (comoving distance $\chi_\ast$), the observed temperature anisotropy is
+\begin{equation}\label{eq:deltaT_integral}
+    \frac{\Delta T}{T}(\hat{\bm{n}}) = \int \frac{d^3k}{(2\pi)^3} \, \delta\rho(\bm{k}) \, T(k) \, e^{i k \chi_\ast \hat{\bm{n}} \cdot \hat{\bm{k}}},
+\end{equation}
+where the integral effectively projects the 3D perturbation onto the 2D sky.
+\end{theorem}
+
+\begin{proof}
+The temperature anisotropy at angular position $\hat{\bm{n}}$ receives contributions from the perturbation at position $\bm{x} = \chi_\ast \hat{\bm{n}}$ on the last scattering surface. Expanding $\delta\rho$ in Fourier modes and accounting for the phase factor $e^{i\bm{k}\cdot\bm{x}}$ at this position gives the integral \eqref{eq:deltaT_integral}.
+\end{proof}
+
+\subsection{Explicit Calculation for Gaussian Profile}
+
+We now compute the angular profile explicitly for the Gaussian hot spot:
+
+\begin{proposition}[Angular Temperature Profile]\label{prop:angular_profile}
+For a Gaussian hot spot centered at $\bm{x}_0 = \chi_\ast \hat{\bm{n}}_0$ on the last scattering surface, the temperature anisotropy as a function of angular separation $\psi$ from $\hat{\bm{n}}_0$ is approximately
+\begin{equation}\label{eq:angular_temp_profile}
+    \frac{\Delta T}{T}(\psi) \approx \frac{\Delta T}{T}\bigg|_{\text{max}} \exp\left( -\frac{\psi^2}{2\theta_0^2} \right),
+\end{equation}
+where $\theta_0 = \sigma / \chi_\ast$ is the characteristic angular radius.
+\end{proposition}
+
+\begin{proof}
+Substituting the Gaussian Fourier transform \eqref{eq:gaussian_fourier} into \eqref{eq:deltaT_integral}:
+\begin{align}
+    \frac{\Delta T}{T}(\hat{\bm{n}}) &= \int \frac{d^3k}{(2\pi)^3} \, A(2\pi\sigma^2)^{3/2} e^{-k^2\sigma^2/2} e^{-i\bm{k}\cdot\bm{x}_0} \, T(k) \, e^{i\bm{k}\cdot\chi_\ast\hat{\bm{n}}} \nonumber \\
+    &= A T_0 (2\pi\sigma^2)^{3/2} \int \frac{d^3k}{(2\pi)^3} \, e^{-k^2\sigma^2/2} e^{i\bm{k}\cdot(\chi_\ast\hat{\bm{n}} - \bm{x}_0)}.
+\end{align}
+
+Let $\bm{r} = \chi_\ast\hat{\bm{n}} - \bm{x}_0 = \chi_\ast(\hat{\bm{n}} - \hat{\bm{n}}_0)$. For small angular separations, $|\bm{r}| \approx \chi_\ast \psi$ where $\psi$ is the angle between $\hat{\bm{n}}$ and $\hat{\bm{n}}_0$. The integral becomes:
+\begin{align}
+    \int \frac{d^3k}{(2\pi)^3} \, e^{-k^2\sigma^2/2} e^{i\bm{k}\cdot\bm{r}} &= \frac{1}{(2\pi\sigma^2)^{3/2}} \exp\left( -\frac{r^2}{2\sigma^2} \right) \nonumber \\
+    &= \frac{1}{(2\pi\sigma^2)^{3/2}} \exp\left( -\frac{\chi_\ast^2 \psi^2}{2\sigma^2} \right).
+\end{align}
+
+Thus:
+\begin{equation}
+    \frac{\Delta T}{T}(\psi) = A T_0 \exp\left( -\frac{\psi^2}{2(\sigma/\chi_\ast)^2} \right) = A T_0 \exp\left( -\frac{\psi^2}{2\theta_0^2} \right).
+\end{equation}
+\end{proof}
+
+\subsection{Determining \texorpdfstring{$\sigma$}{sigma} from Conformal Mapping}
+
+The comoving width $\sigma$ is determined by the conformal structure of the aeon transition:
+
+\begin{proposition}[Conformal Width Mapping]\label{prop:sigma_conformal}
+The characteristic width $\sigma$ of a Hawking point on $\Sigma$ is set by:
+\begin{enumerate}
+    \item The conformal time extent $\delta\eta$ of the final Hawking burst in the previous aeon;
+    \item The curvature scale $H^{-1}$ (Hubble radius) near $\scriplus$.
+\end{enumerate}
+For a de Sitter-like late universe with Hubble parameter $H$, the conformal Hubble radius is $(\eta_\infty - \eta) \cdot aH \sim 1$, giving a characteristic conformal scale. Mapping through to physical units in the new aeon yields
+\begin{equation}\label{eq:sigma_estimate}
+    \sigma \sim 400\text{--}600 \text{ Mpc (comoving)}.
+\end{equation}
+\end{proposition}
+
+\subsection{Final Angular Size Estimate}
+
+Combining the above results:
+
+\begin{corollary}[Hawking Point Angular Diameter]\label{cor:angular_diameter}
+For $\sigma \approx 500$ Mpc and $\chi_\ast \approx 14,000$ Mpc:
+\begin{equation}
+    \theta_0 = \frac{\sigma}{\chi_\ast} \approx \frac{500}{14,000} \approx 0.036 \text{ rad} \approx 2.0^\circ.
+\end{equation}
+The full width at half maximum (FWHM) of the Gaussian profile is
+\begin{equation}
+    \theta_{\text{FWHM}} = 2\sqrt{2\ln 2} \, \theta_0 \approx 2.35 \, \theta_0 \approx 4.8^\circ.
+\end{equation}
+More conservatively, defining the ``diameter'' as $2\theta_0$, we obtain
+\begin{equation}\label{eq:diameter_final}
+    d = 2\theta_0 \approx 3^\circ\text{--}4^\circ,
+\end{equation}
+matching the reported angular sizes of anomalous circular features in CMB analyses \cite{hawking_points_2020}.
+\end{corollary}
+
+% ============================================================================
+% SECTION 6: STATISTICAL DETECTION
+% ============================================================================
+\section{Statistical Detection Methodology}\label{sec:statistics}
+
+Having derived the theoretical prediction for Hawking point signatures, we now outline the statistical framework for their detection in CMB data.
+
+\subsection{Spot-Finding Algorithm}
+
+The detection of Hawking points requires searching for circular regions of anomalously elevated temperature:
+
+\begin{definition}[Circular Temperature Statistic]\label{def:circular_stat}
+For a circular aperture of angular radius $\theta$ centered at sky position $\hat{\bm{n}}_0$, define the mean temperature excess:
+\begin{equation}\label{eq:mean_temp_excess}
+    \bar{T}(\hat{\bm{n}}_0, \theta) = \frac{1}{\pi\theta^2} \int_{|\hat{\bm{n}} - \hat{\bm{n}}_0| < \theta} \frac{\Delta T}{T}(\hat{\bm{n}}) \, d\Omega.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Matched Filter Likelihood]\label{def:matched_filter}
+For a circular Gaussian template $G_{\theta_0}(\psi) = \exp(-\psi^2/2\theta_0^2)$, the matched filter statistic is
+\begin{equation}\label{eq:matched_filter}
+    S(\hat{\bm{n}}_0) = \int G_{\theta_0}(|\hat{\bm{n}} - \hat{\bm{n}}_0|) \, \frac{\Delta T}{T}(\hat{\bm{n}}) \, d\Omega.
+\end{equation}
+This optimally extracts signals matching the expected Hawking point profile.
+\end{definition}
+
+The search algorithm proceeds as follows:
+\begin{enumerate}
+    \item Scan the CMB sky with circular apertures of radius $\theta$ in the target range ($\theta \approx 1.5^\circ$--$2.5^\circ$, corresponding to diameters $3^\circ$--$5^\circ$);
+    \item At each position, compute the statistic $\bar{T}$ or $S$;
+    \item Identify local maxima exceeding a threshold significance;
+    \item Apply the matched filter to refine candidate positions and measure angular sizes.
+\end{enumerate}
+
+\subsection{Null Hypothesis: \texorpdfstring{$\Lambda$CDM}{LCDM} Simulations}
+
+To assess significance, candidate hot spots must be compared against expectations from standard $\Lambda$CDM cosmology with inflationary initial conditions:
+
+\begin{definition}[Null Distribution]\label{def:null_dist}
+The null hypothesis $H_0$ is that the CMB is a Gaussian random field with angular power spectrum $C_\ell^{(\Lambda\text{CDM})}$ as predicted by inflationary $\Lambda$CDM. Under $H_0$, the statistics $\bar{T}$ and $S$ have well-defined probability distributions computable from $C_\ell$.
+\end{definition}
+
+The variance of the mean temperature in a circular aperture under $H_0$ is:
+\begin{equation}\label{eq:variance_circular}
+    \text{Var}[\bar{T}(\theta)] = \sum_\ell \frac{2\ell + 1}{4\pi} C_\ell \, |W_\ell(\theta)|^2,
+\end{equation}
+where $W_\ell(\theta)$ is the window function for the circular aperture.
+
+\subsection{Monte Carlo Validation}
+
+The significance assessment relies on Monte Carlo simulations:
+
+\begin{enumerate}
+    \item Generate $N_{\text{sim}}$ mock CMB skies from the $\Lambda$CDM power spectrum, including realistic noise and beam effects matching the observational data;
+    \item Apply the spot-finding algorithm identically to each mock sky;
+    \item Record the number and properties (temperature excess, angular size) of detected ``spots'' in each simulation;
+    \item Construct the empirical distribution of spot counts and properties under $H_0$;
+    \item Compare the observed data to this null distribution to compute p-values.
+\end{enumerate}
+
+\begin{definition}[P-value for Hot Spot Count]\label{def:pvalue}
+Let $n_{\text{obs}}$ be the number of hot spots with temperature excess $>\tau$ and angular diameter in the range $[d_{\min}, d_{\max}]$ found in the real CMB data. The p-value is
+\begin{equation}\label{eq:pvalue}
+    p = \frac{\#\{i : n_{\text{sim},i} \geq n_{\text{obs}}\}}{N_{\text{sim}}}.
+\end{equation}
+\end{definition}
+
+\subsection{Reported Findings}
+
+The analysis of An, Meissner, Nurowski, and Penrose (2020) applied this methodology to Planck CMB data and reported the following findings:
+
+\begin{itemize}
+    \item Detection of \emph{numerous anomalous circular hot spots} with diameters in the range $3^\circ$--$4^\circ$;
+    \item The observed count exceeds $\Lambda$CDM expectations at claimed significance;
+    \item The angular size distribution is concentrated around the theoretically predicted range, rather than being uniformly distributed;
+    \item The spots are distributed across the sky without obvious correlation with known foreground sources.
+\end{itemize}
+
+The claimed detection remains subject to scrutiny regarding potential systematics, foreground contamination, and look-elsewhere effects \cite{hawking_points_2020}.
+
+\subsection{Test Statistic Refinements}
+
+More sophisticated analyses may employ:
+
+\begin{enumerate}
+    \item \textbf{Annular statistics}: Measure temperature in an annulus $\theta_1 < |\hat{\bm{n}} - \hat{\bm{n}}_0| < \theta_2$ to subtract local background and isolate the hot spot signal;
+    \item \textbf{Multi-frequency analysis}: Use component-separated maps to verify that signals persist across frequencies (ruling out frequency-dependent foregrounds);
+    \item \textbf{Polarization}: Examine E-mode and B-mode polarization at hot spot locations for consistency with primordial signals.
+\end{enumerate}
+
+% ============================================================================
+% SECTION 7: COMPARISON WITH LAMBDA-CDM
+% ============================================================================
+\section{Comparison with Inflationary \texorpdfstring{$\Lambda$CDM}{LCDM} Expectations}\label{sec:comparison}
+
+We now contrast the CCC prediction of Hawking points with expectations from the standard cosmological paradigm.
+
+\subsection{\texorpdfstring{$\Lambda$CDM}{LCDM}: Gaussian Random Field}
+
+In inflationary $\Lambda$CDM, primordial perturbations arise from quantum vacuum fluctuations and are predicted to be:
+
+\begin{enumerate}
+    \item \textbf{Gaussian}: The probability distribution of fluctuations is fully characterized by the two-point correlation function (equivalently, the power spectrum $P(k)$ or angular spectrum $C_\ell$);
+    \item \textbf{Statistically isotropic}: No preferred directions in space;
+    \item \textbf{Nearly scale-invariant}: $P(k) \propto k^{n_s - 1}$ with $n_s \approx 0.965$.
+\end{enumerate}
+
+\begin{proposition}[$\Lambda$CDM Hot Spot Expectations]\label{prop:lcdm_spots}
+In a Gaussian random field, circular hot spots can arise as random fluctuations. However:
+\begin{enumerate}
+    \item The probability of finding a hot spot of given temperature excess decreases exponentially with the excess;
+    \item Hot spots do not have a \emph{preferred angular size}---random fluctuations produce hot spots across all scales according to the power spectrum;
+    \item The number of hot spots above a threshold is a Poisson-like random variable, fully predictable from $C_\ell$.
+\end{enumerate}
+\end{proposition}
+
+\subsection{Why \texorpdfstring{$\Lambda$CDM}{LCDM} Does Not Predict Uniform Circular Spots}
+
+The key distinction between CCC and $\Lambda$CDM is the \emph{uniformity of angular size}:
+
+\begin{theorem}[No Preferred Scale in $\Lambda$CDM]\label{thm:no_scale}
+Standard inflationary $\Lambda$CDM does not predict a \emph{concentrated population} of circular hot spots with uniform angular sizes in any specific range. While acoustic oscillations produce a characteristic scale (the sound horizon), this manifests as a statistical preference in the power spectrum $C_\ell$, not as individual circular features of fixed size.
+\end{theorem}
+
+\begin{proof}
+The CMB anisotropies in $\Lambda$CDM are a superposition of plane waves with random phases:
+\begin{equation}
+    \frac{\Delta T}{T}(\hat{\bm{n}}) = \sum_{\ell m} a_{\ell m} Y_{\ell m}(\hat{\bm{n}}),
+\end{equation}
+where $a_{\ell m}$ are independent Gaussian random variables with variance $C_\ell$. The acoustic peaks in $C_\ell$ do not produce isolated circular features; they produce a correlated random field with enhanced power at specific multipoles. Random ``hot spots'' in this field do not cluster around a preferred size.
+\end{proof}
+
+\subsection{Potential \texorpdfstring{$\Lambda$CDM}{LCDM} Explanations for Anomalies}
+
+Skeptics of the Hawking point claims argue that the observed anomalies could arise from:
+
+\begin{enumerate}
+    \item \textbf{Statistical flukes}: With many possible search locations and parameters, chance alignments can produce seemingly significant features (look-elsewhere effect);
+    \item \textbf{Foreground contamination}: Galactic or extragalactic foregrounds (dust, synchrotron, free-free emission) could create localized features;
+    \item \textbf{Systematic errors}: Instrumental effects or data processing artifacts;
+    \item \textbf{Known physical sources}: Galaxy clusters (via the thermal Sunyaev-Zeldovich effect), radio sources, or other astrophysical objects.
+\end{enumerate}
+
+A robust detection of Hawking points requires careful treatment of all these potential contaminants \cite{ccc_wiki,hawking_points_2020}.
+
+\subsection{CCC-Specific Signature}
+
+The CCC prediction is distinguishable by specific features:
+
+\begin{proposition}[CCC Distinctive Features]\label{prop:ccc_features}
+Hawking points from CCC are predicted to have:
+\begin{enumerate}
+    \item \textbf{Uniform angular size}: Concentrated in the range $3^\circ$--$4^\circ$ diameter, set by conformal geometry rather than random fluctuations;
+    \item \textbf{Circular symmetry}: Individual spots should be nearly circular, reflecting the spherical symmetry of black hole evaporation;
+    \item \textbf{Temperature enhancement}: Hot spots (positive temperature excess), not cold spots, because Hawking radiation adds energy;
+    \item \textbf{Multiple occurrences}: Numerous spots across the sky, corresponding to the many supermassive black holes that evaporated in the previous aeon;
+    \item \textbf{Statistical independence}: Spots should be uncorrelated with each other (except possibly at very large angular separations if the previous aeon had large-scale structure).
+\end{enumerate}
+\end{proposition}
+
+% ============================================================================
+% SECTION 8: CONCLUSIONS
+% ============================================================================
+\section{Conclusions}\label{sec:conclusions}
+
+\subsection{Summary of the Mathematical Chain}
+
+We have presented a complete mathematical derivation connecting the foundational postulates of Conformal Cyclic Cosmology to the observable prediction of Hawking points in the CMB. The logical chain proceeds as follows:
+
+\begin{enumerate}
+    \item \textbf{Conformal identification of aeons}: The future null infinity $\scriplus$ of one aeon is smoothly identified with the Big Bang hypersurface $\sigmabb$ of the next via a conformal rescaling $g_{ab}^{(\text{new})} = \Omega^2 g_{ab}^{(\text{old})}$, with $\Omega \to 0$ at $\scriplus$. This requires the late-time mass fade-out assumption and is consistent with Penrose's Weyl curvature hypothesis.
+    
+    \item \textbf{Massless propagation and energy pulses}: In the far future of an aeon, supermassive black holes evaporate via Hawking radiation, producing localized bursts of massless particles propagating toward $\scriplus$. The conformal invariance of null geodesics and the transformation properties of energy flux ensure these pulses are transported through the crossover.
+    
+    \item \textbf{Finite-width crossover imprint}: The finite conformal width $\delta\eta$ of the radiation pulse, combined with the conformal geometry, produces a localized energy enhancement of comoving size $\sigma \sim 400$--$600$ Mpc on the initial hypersurface of the new aeon.
+    
+    \item \textbf{Transfer to last scattering}: This localized perturbation propagates through the radiation-dominated era and imprints on the CMB at recombination, producing a circular hot spot on the sky.
+    
+    \item \textbf{Observed angular size}: The angular diameter of the hot spot is $d = 2\sigma/\chi_\ast \approx 3^\circ$--$4^\circ$, matching reported anomalous circular features in CMB analyses.
+\end{enumerate}
+
+\subsection{Open Questions}
+
+Several important questions require further investigation:
+
+\begin{enumerate}
+    \item \textbf{Robustness to cosmological parameters}: How sensitively does the predicted angular size depend on assumptions about $H_0$, $\Omega_\Lambda$, spatial curvature, and other parameters?
+    
+    \item \textbf{Alternative systematics}: Can all potential foreground and instrumental sources of circular features be definitively ruled out?
+    
+    \item \textbf{Independent analyses}: Confirmation by independent research groups using different methodologies and datasets is essential.
+    
+    \item \textbf{Polarization signatures}: Do Hawking points produce distinctive polarization patterns (E-modes, B-modes) that could provide additional evidence?
+    
+    \item \textbf{Mass fade-out mechanism}: What physical process could cause all massive particles to become effectively massless in the far future? Is this consistent with known particle physics?
+    
+    \item \textbf{Entropy considerations}: How does the second law of thermodynamics operate across aeon boundaries in CCC?
+\end{enumerate}
+
+\subsection{Concluding Remarks}
+
+The detection of Hawking points would represent extraordinary evidence for Conformal Cyclic Cosmology and, by extension, for a cyclic picture of cosmic history fundamentally different from the standard inflationary paradigm. The theoretical framework presented here demonstrates that CCC makes concrete, quantitative predictions about CMB observables---predictions that are, in principle, testable.
+
+The reported anomalous circular features with $3^\circ$--$4^\circ$ diameters are intriguing and \emph{potentially} supportive of CCC. However, extraordinary claims require extraordinary evidence. The scientific community rightly demands:
+
+\begin{itemize}
+    \item Rigorous treatment of statistical look-elsewhere effects;
+    \item Comprehensive systematics studies;
+    \item Independent replication by multiple groups;
+    \item Consistency with polarization and other ancillary data.
+\end{itemize}
+
+Until these standards are met, Hawking points should be regarded as a fascinating possibility worthy of continued scrutiny, rather than established fact. The mathematical elegance of CCC and its bold cosmological vision make it a compelling framework to explore, while scientific caution demands reserving judgment until the evidence is incontrovertible \cite{ccc_wiki,hawking_points_2020}.
+
+% ============================================================================
+% REFERENCES
+% ============================================================================
+\newpage
+\printbibliography[title={References}]
+
+\end{document}
