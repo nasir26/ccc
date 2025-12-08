@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'ccc_quantum_simulation.blg'
+[47] biber:340> INFO - === Mon Dec  8, 2025, 14:46:42
+[57] Biber.pm:419> INFO - Reading 'ccc_quantum_simulation.bcf'
+[90] Biber.pm:979> INFO - Found 6 citekeys in bib section 0
+[96] Biber.pm:4419> INFO - Processing section 0
+[103] Biber.pm:4610> INFO - Looking for bibtex file 'ccc_quantum_refs.bib' for section 0
+[103] bibtex.pm:1713> INFO - LaTeX decoding ...
+[111] bibtex.pm:1519> INFO - Found BibTeX data source 'ccc_quantum_refs.bib'
+[148] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[148] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[148] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[148] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[150] bbl.pm:660> INFO - Writing 'ccc_quantum_simulation.bbl' with encoding 'UTF-8'
+[151] bbl.pm:763> INFO - Output to ccc_quantum_simulation.bbl

@@ -1,0 +1,78 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}CCC Assumptions and Physical Content}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Simulation Scope}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Contributions}{4}{subsection.1.3}%
+\contentsline {section}{\numberline {2}CCC Mathematical Model in Operator Form}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Conformal Geometry}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Massless Scalar and Electromagnetic Fields}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Conformal Invariance of Massless Fields}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Operator Form}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Boundary Behavior at Crossover}{6}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Null Congruences and Raychaudhuri Equation}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Conformal Transformation of Null Vectors}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Transport Equations for Gaussian Pulses}{7}{subsubsection.2.3.2}%
+\contentsline {section}{\numberline {3}Discretization and Hamiltonian Encoding for Quantum Simulation}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Lattice and Operators}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Finite-Difference Stencils}{7}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Hamiltonian Form}{8}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Alternative: Staggered Leapfrog}{8}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}Boundary and Crossover Conditions}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Periodic Boundaries}{8}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Crossover Matching}{9}{subsubsection.3.3.2}%
+\contentsline {section}{\numberline {4}Quantum Algorithm Mapping and Circuit Synthesis}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}State Encoding}{9}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Amplitude Encoding}{9}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Hamiltonian Simulation Methods}{9}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Trotter--Suzuki Decomposition}{10}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Linear Combination of Unitaries (LCU) and Quantum Signal Processing (QSP)}{10}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Spectral Methods via Quantum Fourier Transform}{11}{subsubsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.3}Initial Pulse Preparation}{11}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Gaussian State Preparation}{11}{subsubsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.4}Measurement and Observables}{12}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Energy Density Estimation}{12}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Angular Profiles and Two-Point Correlators}{12}{subsubsection.4.4.2}%
+\contentsline {section}{\numberline {5}Worked Examples: 1+1D and 2+1D CCC-Relevant Subsystems}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}1+1D Massless Scalar Across Crossover}{12}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Setup}{12}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Exact Solution}{12}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Quantum Simulation via QFT}{13}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Error Analysis}{13}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Numerical Verification}{13}{subsubsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.2}2+1D Pulse Transport}{14}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Setup}{14}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Trotterized Evolution}{14}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Angular Radius Calculation}{14}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Simulation Parameters and Trade-offs}{14}{subsubsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.3}Electromagnetic Field Case}{15}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Conformal Maxwell Equations}{15}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Discretization of Curl Operators}{15}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Block-Encoding for Curl}{15}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Stability-Preserving Updates}{16}{subsubsection.5.3.4}%
+\contentsline {section}{\numberline {6}Complexity, Error Analysis, and Feasibility}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Resource Estimates}{16}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Qubit Requirements}{16}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Gate Count Asymptotics}{16}{subsubsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.2}Error Budgets}{16}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Achievability and Hardware Requirements}{17}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Near-Term Devices (NISQ)}{17}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Fault-Tolerant Era}{17}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Error Mitigation}{17}{subsubsection.6.3.3}%
+\contentsline {section}{\numberline {7}Flow Diagrams and Implementation Roadmap}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Algorithm Flow Diagram}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}System Stack Diagram}{17}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Three-Year Milestone Plan}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Key Performance Indicators}{17}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Limitations, Scope, and Future Extensions}{17}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Current Scope}{17}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Limitations}{18}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Future Extensions}{19}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {8.3.1}Stochastic Backgrounds}{19}{subsubsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.2}Backreaction}{19}{subsubsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.3}Observational Mapping}{19}{subsubsection.8.3.3}%
+\contentsline {subsubsection}{\numberline {8.3.4}Quantum Gravity Corrections}{20}{subsubsection.8.3.4}%
+\contentsline {section}{\numberline {9}Conclusion}{20}{section.9}%
+\contentsline {section}{\numberline {A}Explicit Circuit Constructions}{21}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}1+1D QFT Circuit}{21}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Trotter Step Circuit}{21}{subsection.A.2}%
+\contentsline {section}{\numberline {B}Derivation of Crossover Matching}{21}{appendix.B}%
+\contentsline {section}{\numberline {C}Spectral Properties of Discrete Laplacian}{22}{appendix.C}%
