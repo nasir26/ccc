@@ -1,0 +1,46 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Summary of Contributions}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Conformal Cyclic Cosmology Framework}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Open FLRW Metric}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Conformal Time and the Conformal Metric}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Asymptotic Behavior and Future Null Infinity}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}The CCC Conformal Identification}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Conformal Invariance of Massless Fields}{6}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}The Late-Time Mass Fade-Out Assumption}{6}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}The Weyl Curvature Hypothesis}{7}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Massless Field Propagation and Hawking Radiation}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Hawking Evaporation of Supermassive Black Holes}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Energy-Momentum Tensor Near $\mathcal {I}^+$}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Null Geodesics and Geometric Optics}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Conformal Transformation of Null Geodesics}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Energy Flux Transformation}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Angular Distribution at Crossover}{9}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Crossover Geometry and Transport to the CMB}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Crossover Hypersurface}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Matching Conditions for Conformally Invariant Fields}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Localized Energy Enhancement at Crossover}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Propagation Through the New Aeon to Recombination}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Angular Radius on the CMB Sky}{11}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Numerical Estimate of Angular Size}{11}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Angular Scale and Temperature Profile Derivation}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Gaussian Energy Profile at Crossover}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Radiation Transfer to CMB Temperature}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Temperature Anisotropy on the Sky}{12}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Explicit Calculation for Gaussian Profile}{13}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Determining $\sigma $ from Conformal Mapping}{13}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Final Angular Size Estimate}{14}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Statistical Detection Methodology}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Spot-Finding Algorithm}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Null Hypothesis: $\Lambda $CDM Simulations}{15}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Monte Carlo Validation}{15}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Reported Findings}{15}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Test Statistic Refinements}{16}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Comparison with Inflationary $\Lambda $CDM Expectations}{16}{section.7}%
+\contentsline {subsection}{\numberline {7.1}$\Lambda $CDM: Gaussian Random Field}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Why $\Lambda $CDM Does Not Predict Uniform Circular Spots}{16}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Potential $\Lambda $CDM Explanations for Anomalies}{17}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}CCC-Specific Signature}{17}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Conclusions}{17}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Summary of the Mathematical Chain}{17}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Open Questions}{18}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Concluding Remarks}{18}{subsection.8.3}%
